@@ -1,14 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.4.0-rc"
-    id("org.jetbrains.dokka") version "1.4.0-rc-SNAPSHOT"
+    kotlin("jvm") version "1.4.0"
+    id("org.jetbrains.dokka") version "1.4.10-dev-47"
 }
 
 repositories {
-    maven("https://dl.bintray.com/kotlin/kotlin-dev")
-    maven("https://dl.bintray.com/kotlin/kotlin-eap")
+    maven("https://maven.pkg.jetbrains.space/kotlin/p/dokka/dev")
     mavenCentral()
-    mavenLocal()
     jcenter()
+    mavenLocal()
 }
 
 dependencies {
@@ -17,12 +16,11 @@ dependencies {
 
 tasks.dokkaHtml {
     dependsOn(tasks.clean)
-    outputDirectory = "$buildDir/dokka"
+
     dokkaSourceSets {
         configureEach {
-            sourceRoot {
-                path = "PATH_TO_FILES"
-            }
+            sourceRoot(File("/home/aratajczak/Pobrane/jdk-8u261-linux-x64/jdk1.8.0_261/src/java/util"))
+            sourceRoot(File("/home/aratajczak/Pobrane/jdk-8u261-linux-x64/jdk1.8.0_261/src/java/io"))
         }
     }
 }
